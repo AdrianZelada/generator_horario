@@ -10,6 +10,7 @@ package horario_enfermeria;
  */
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -20,7 +21,7 @@ public class ConexionBD {
 
         try {
            Class.forName("com.mysql.jdbc.Driver");
-           con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/enfermerasdb",
+           con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/enfer_db",
            "root", "");
             // Creamos un Statement para poder hacer peticiones a la bd
             Statement stat = con.createStatement();
@@ -48,7 +49,7 @@ public class ConexionBD {
         int i=0;
         try{
             Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/enfermerasdb",
+            con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/enfer_db",
             "root", "");
             // Creamos un Statement para poder hacer peticiones a la bd
             Statement stat = con.createStatement();
@@ -73,7 +74,7 @@ public class ConexionBD {
         int i=0;
         try{
             Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/enfermerasdb",
+            con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/enfer_db",
             "root", "");
             // Creamos un Statement para poder hacer peticiones a la bd
             Statement stat = con.createStatement();
@@ -97,7 +98,7 @@ public class ConexionBD {
         int i=0;
         try{
             Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/enfermerasdb",
+            con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/enfer_db",
             "root", "");
             // Creamos un Statement para poder hacer peticiones a la bd
             Statement stat = con.createStatement();
@@ -120,5 +121,31 @@ public class ConexionBD {
            System.out.println("Error: " + e.getMessage());
         }
         return enfermeras;
+    }
+    
+    public static void UpdateEnfermera(String new_nombre,String new_ap_paterno,String new_ap_materno,String new_date,String new_cargo,String new_contrato,int id){    
+        Connection con;
+        ResultSet rs;
+        
+        try{
+            Class.forName("com.mysql.jdbc.Driver");
+            con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/enfer_db","root", "");
+            String query = "update enfermeras set nombres = ?, ap_paterno = ?, ap_materno =?, año_nacimiento=?,tipo_enfermera=?,tipo_contrato=? where id = ?";
+            PreparedStatement preparedStmt = con.prepareStatement(query);            
+            preparedStmt.setString(1, new_nombre);
+            preparedStmt.setString(2, new_ap_paterno);
+            preparedStmt.setString(3, new_ap_materno);
+            preparedStmt.setString(4, new_date);
+            preparedStmt.setString(5, new_cargo);
+            preparedStmt.setString(6, new_contrato);
+            preparedStmt.setInt   (7, id);
+            
+            preparedStmt.executeUpdate();
+       
+            con.close();
+        }catch(ClassNotFoundException | SQLException e) {
+           System.out.println("Error: " + e.getMessage());
+        }  
+             
     }
 }

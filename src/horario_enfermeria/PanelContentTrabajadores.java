@@ -5,6 +5,7 @@
  */
 package horario_enfermeria;
 
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
@@ -24,6 +25,7 @@ public class PanelContentTrabajadores extends JPanel{
     JLabel cargo;
     JLabel item;
     JLabel grupo;
+    JButton edit;
     
     
     public PanelContentTrabajadores(String nombre,int tam,int y,int wi,int x) {
@@ -39,17 +41,18 @@ public class PanelContentTrabajadores extends JPanel{
         cargo=new JLabel("Cargo");
         cargo.setBounds(390, 20, 120, 20);
         item=new JLabel("Item");
-        item.setBounds(510, 20, 120, 20);
+        item.setBounds(510, 20, 120, 20);                        
         
         grupo=new JLabel("Grupo");
         grupo.setBounds(610, 20, 120, 20);
+                
         
         this.add(nombreL);
         this.add(paterno);
         this.add(materno);
         this.add(cargo);
         this.add(item);
-        this.add(grupo); 
+        this.add(grupo);         
         
         tra=new Trabajadores[tam];
         
@@ -61,7 +64,7 @@ public class PanelContentTrabajadores extends JPanel{
         this.setBorder(bordejpanel); 
         int k=50;
         for (int i = 0; i < enfer.length; i++) {            
-            tra[i]=new Trabajadores(enfer[i],k);
+            tra[i]=new Trabajadores(enfer[i],k,i+1);
             k=k+35;
             this.add(tra[i]);
         }                
