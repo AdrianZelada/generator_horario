@@ -119,7 +119,7 @@ public class horario extends JPanel{
         
         this.addMouseListener(new MouseAdapter() { 
           public void mousePressed(MouseEvent me) { 
-              HorarioGrupo ventana1=new HorarioGrupo(nombrevar,total,2);              
+              HorarioGrupo ventana1=new HorarioGrupo(nombrevar,total,2,"");              
           } 
         }); 
     }

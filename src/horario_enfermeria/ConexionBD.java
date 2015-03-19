@@ -21,7 +21,7 @@ public class ConexionBD {
 
         try {
            Class.forName("com.mysql.jdbc.Driver");
-           con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/enfer_db",
+           con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/enfermerasdb",
            "root", "");
             // Creamos un Statement para poder hacer peticiones a la bd
             Statement stat = con.createStatement();
@@ -49,7 +49,7 @@ public class ConexionBD {
         int i=0;
         try{
             Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/enfer_db",
+            con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/enfermerasdb",
             "root", "");
             // Creamos un Statement para poder hacer peticiones a la bd
             Statement stat = con.createStatement();
@@ -74,7 +74,7 @@ public class ConexionBD {
         int i=0;
         try{
             Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/enfer_db",
+            con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/enfermerasdb",
             "root", "");
             // Creamos un Statement para poder hacer peticiones a la bd
             Statement stat = con.createStatement();
@@ -98,7 +98,7 @@ public class ConexionBD {
         int i=0;
         try{
             Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/enfer_db",
+            con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/enfermerasdb",
             "root", "");
             // Creamos un Statement para poder hacer peticiones a la bd
             Statement stat = con.createStatement();
@@ -129,7 +129,7 @@ public class ConexionBD {
         
         try{
             Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/enfer_db","root", "");
+            con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/enfermerasdb","root", "");
             String query = "update enfermeras set nombres = ?, ap_paterno = ?, ap_materno =?, año_nacimiento=?,tipo_enfermera=?,tipo_contrato=? where id = ?";
             PreparedStatement preparedStmt = con.prepareStatement(query);            
             preparedStmt.setString(1, new_nombre);

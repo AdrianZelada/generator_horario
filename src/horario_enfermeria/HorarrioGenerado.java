@@ -45,7 +45,7 @@ public class HorarrioGenerado extends JFrame {
             }		
             
             if(evento.getActionCommand().equals("Horarios")){
-                HorarioGrupo ventana1=new HorarioGrupo("total",HorarrioGenerado.totalH,12);
+                HorarioGrupo ventana1=new HorarioGrupo("total",HorarrioGenerado.totalH,12,"horarios");
                 ventana1.setVisible(true);
             }
             

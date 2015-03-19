@@ -42,15 +42,15 @@ public class HorarioGrupo extends JFrame{
     JLabel enfermeras[];
     
 
-    public HorarioGrupo(String nombre,int[][]total,int tam) {
+    public HorarioGrupo(String nombre,int[][]total,int tam,String type) {
         try {
-            inicializacion(nombre,total,tam);
+            inicializacion(nombre,total,tam,type);
         } catch (Exception e) {
             e.printStackTrace();
         }      
     }
     
-    private void inicializacion(String nombre,int[][] total, int tam) throws Exception{
+    private void inicializacion(String nombre,int[][] total, int tam,String type) throws Exception{
         
         
         Year1 =new JLabel("2014");
@@ -123,6 +123,7 @@ public class HorarioGrupo extends JFrame{
         this.setVisible(true);
         //this.setResizable(false);
         this.setBounds(200, 50,1000,650);    
+        this.setResizable(false);
         this.setLayout(null);    
         
         this.add(Year1);
@@ -150,9 +151,13 @@ public class HorarioGrupo extends JFrame{
         panelContentGenerado content=new panelContentGenerado(nombre,total);
         this.add(content);
         
-        PanelContentTrabajadores contTra=new PanelContentTrabajadores(nombre, tam, 440,150,150);
+        if(!type.equals("horarios")){
+            PanelContentTrabajadores contTra=new PanelContentTrabajadores(nombre, tam, 440,150,150);
+            this.add(contTra);            
+        }else{
+            this.setBounds(200, 50,1000,530);               
+        }
         
-        this.add(contTra);
       
     }
         

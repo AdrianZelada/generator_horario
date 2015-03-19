@@ -31,6 +31,8 @@ public class PanelContent extends JPanel{
     JLabel Numero_turno;
     JButton Generar;
     JButton Cancelar;
+    JButton Enfermeras;
+    JButton Horarios;
     JComboBox Combo_mes;
     JComboBox Combo_ano;
      
@@ -76,8 +78,15 @@ public class PanelContent extends JPanel{
         
         Generar=new JButton("Generar");
         Generar.setBounds(80, 150, 150, 30);
+        
+        Enfermeras=new JButton("Enfermeras");
+        Enfermeras.setBounds(80,200, 150, 30);
+        
         Cancelar=new JButton("Cancelar");
-        Cancelar.setBounds(260, 150, 150, 30);
+        Cancelar.setBounds(260, 200, 150, 30);
+        
+        Horarios=new JButton("Horarios");
+        Horarios.setBounds(260, 150, 150, 30);
   
         this.add(Mes_Prog);
         this.add(Combo_mes);
@@ -86,7 +95,9 @@ public class PanelContent extends JPanel{
         this.add(Combo_ano);
         
         this.add(Generar);
-        this.add(Cancelar);                                   
+        this.add(Enfermeras);
+        this.add(Cancelar);    
+        this.add(Horarios);    
     }
     
     public void paint(Graphics g) {
