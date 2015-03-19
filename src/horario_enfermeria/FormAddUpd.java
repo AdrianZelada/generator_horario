@@ -12,6 +12,7 @@ import java.io.IOException;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
@@ -121,14 +122,20 @@ public class FormAddUpd extends JFrame{
         Guardar.addActionListener(new ActionListener(){
 
             @Override
-            public void actionPerformed(ActionEvent e) {            
-                String nombre=T_nomb.getText();
-                String paterno=T_ap_paterno.getText();
-                String materno=T_ap_materno.getText();
-                String fecha=year.getText();
-                String cargo = T_cargo.getText();
-                String contrato=T_contrato.getText();
-                ConexionBD.UpdateEnfermera(nombre,paterno,materno,fecha,cargo,contrato,id);
+            public void actionPerformed(ActionEvent e) {       
+               int resp = JOptionPane.showConfirmDialog(null, "¿Esta seguro?", "Alerta!", JOptionPane.YES_NO_OPTION);
+                if(resp==0){
+                    String nombre=T_nomb.getText();
+                    String paterno=T_ap_paterno.getText();
+                    String materno=T_ap_materno.getText();
+                    String fecha=year.getText();
+                    String cargo = T_cargo.getText();
+                    String contrato=T_contrato.getText();
+                    ConexionBD.UpdateEnfermera(nombre,paterno,materno,fecha,cargo,contrato,id);
+                    JOptionPane.showMessageDialog(null, "Datos Actualizados", "Confirmacion", JOptionPane.DEFAULT_OPTION);
+                    setVisible(false);
+                }
+                
             }          
         });
         

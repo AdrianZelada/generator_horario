@@ -98,6 +98,22 @@ public class PanelContent extends JPanel{
         this.add(Enfermeras);
         this.add(Cancelar);    
         this.add(Horarios);    
+        
+        
+         Enfermeras.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {            
+                TotalEnfermeras ventana2=new TotalEnfermeras();
+                ventana2.setVisible(true);
+            }          
+        });
+          Horarios.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {            
+                HorariosEdit ventana2=new HorariosEdit();
+                ventana2.setVisible(true);
+            }          
+        });
     }
     
     public void paint(Graphics g) {

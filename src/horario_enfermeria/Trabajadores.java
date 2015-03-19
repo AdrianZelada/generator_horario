@@ -56,7 +56,7 @@ public class Trabajadores extends JPanel{
         /*for(int i=0;i<datos.length;i++){
             System.out.println(datos[i]);
         }*/
-        System.out.println(trab);
+        
         edit=new JButton();
         
         if(cargo.getText().equals("enfermera")){

@@ -21,7 +21,7 @@ public class ConexionBD {
 
         try {
            Class.forName("com.mysql.jdbc.Driver");
-           con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/enfermerasdb",
+           con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/enfer_db",
            "root", "");
             // Creamos un Statement para poder hacer peticiones a la bd
             Statement stat = con.createStatement();
@@ -49,7 +49,7 @@ public class ConexionBD {
         int i=0;
         try{
             Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/enfermerasdb",
+            con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/enfer_db",
             "root", "");
             // Creamos un Statement para poder hacer peticiones a la bd
             Statement stat = con.createStatement();
@@ -74,7 +74,7 @@ public class ConexionBD {
         int i=0;
         try{
             Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/enfermerasdb",
+            con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/enfer_db",
             "root", "");
             // Creamos un Statement para poder hacer peticiones a la bd
             Statement stat = con.createStatement();
@@ -98,7 +98,7 @@ public class ConexionBD {
         int i=0;
         try{
             Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/enfermerasdb",
+            con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/enfer_db",
             "root", "");
             // Creamos un Statement para poder hacer peticiones a la bd
             Statement stat = con.createStatement();
@@ -123,13 +123,40 @@ public class ConexionBD {
         return enfermeras;
     }
     
+    public static turnos [] get_turnoCompleto(){
+        
+        Connection con;
+        ResultSet rs;
+        turnos [] horario = new turnos[6];
+        int i=0;
+        try{
+            Class.forName("com.mysql.jdbc.Driver");
+            con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/enfer_db",
+            "root", "");
+            // Creamos un Statement para poder hacer peticiones a la bd
+            Statement stat = con.createStatement();
+            String seleccionar = "SELECT * FROM turnos";
+            rs = stat.executeQuery(seleccionar);
+             
+            while (rs.next()) {                                         
+                
+                    horario[i]=new turnos(rs.getString("nombre"), rs.getString("hora_inicio"), rs.getString("hora_fin"));                    
+                     i++;
+                 }
+        }catch(ClassNotFoundException | SQLException e) {
+           System.out.println("Error: " + e.getMessage());
+        }
+        return horario;
+        
+    }
+    
     public static void UpdateEnfermera(String new_nombre,String new_ap_paterno,String new_ap_materno,String new_date,String new_cargo,String new_contrato,int id){    
         Connection con;
         ResultSet rs;
         
         try{
             Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/enfermerasdb","root", "");
+            con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/enfer_db","root", "");
             String query = "update enfermeras set nombres = ?, ap_paterno = ?, ap_materno =?, año_nacimiento=?,tipo_enfermera=?,tipo_contrato=? where id = ?";
             PreparedStatement preparedStmt = con.prepareStatement(query);            
             preparedStmt.setString(1, new_nombre);
@@ -139,6 +166,29 @@ public class ConexionBD {
             preparedStmt.setString(5, new_cargo);
             preparedStmt.setString(6, new_contrato);
             preparedStmt.setInt   (7, id);
+            
+            preparedStmt.executeUpdate();
+       
+            con.close();
+        }catch(ClassNotFoundException | SQLException e) {
+           System.out.println("Error: " + e.getMessage());
+        }  
+             
+    }
+    
+     public static void UpdateTurno(String new_nombre,String new_inicio,String new_fin,int id){    
+        Connection con;
+        ResultSet rs;
+        
+        try{
+            Class.forName("com.mysql.jdbc.Driver");
+            con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/enfer_db","root", "");
+            String query = "update turnos set nombre = ?, hora_inicio = ?, hora_fin =?  where id = ?";
+            PreparedStatement preparedStmt = con.prepareStatement(query);            
+            preparedStmt.setString(1, new_nombre);
+            preparedStmt.setString(2, new_inicio);
+            preparedStmt.setString(3, new_fin);            
+            preparedStmt.setInt   (4, id);
             
             preparedStmt.executeUpdate();
        

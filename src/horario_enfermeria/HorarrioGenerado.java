@@ -49,7 +49,7 @@ public class HorarrioGenerado extends JFrame {
                 ventana1.setVisible(true);
             }
             
-            if(evento.getActionCommand().equals("Enfermeras")){
+            if(evento.getActionCommand().equals("Enfermeras")){                
                 TotalEnfermeras ventana2=new TotalEnfermeras();
                 ventana2.setVisible(true);
             }
@@ -64,8 +64,8 @@ public class HorarrioGenerado extends JFrame {
         HorarioCompleto=new JButton("Horarios");
         HorarioCompleto.setBounds(30,350, 120, 30);
         
-        Enfermeras=new JButton("Enfermeras");
-        Enfermeras.setBounds(240,350, 120, 30);
+     //   Enfermeras=new JButton("Enfermeras");
+     //   Enfermeras.setBounds(240,350, 120, 30);
         
         this.setTitle("Generar Horarios");        
         this.setResizable(false);
@@ -76,12 +76,12 @@ public class HorarrioGenerado extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.add(content);
         this.add(Atraz);
-        this.add(Enfermeras);
+     //   this.add(Enfermeras);
         this.add(HorarioCompleto);
         
         ManejadorB m=new ManejadorB();
         Atraz.addActionListener(m);
-        Enfermeras.addActionListener(m);
+     //   Enfermeras.addActionListener(m);
         HorarioCompleto.addActionListener(m);
         
     }            
